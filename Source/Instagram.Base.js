@@ -5,13 +5,54 @@ var Instagram = new Class({
 	
 	options: {
 		'client_id': null,
-		'redirect_uri': null
+		'redirect_uri': null,
+		'scope': ['basic', 'relationships']
 	},
 	
 	initialize: function(options){
 		this.setOptions(options);
 		this.apiEndpoint = "https://api.instagram.com/v1/";	
 		this.accessToken = null;	
+	},
+	
+	request: function(endpoint, dataEvents, reqParameter, accessRequired){
+		reqParameter = reqParameter || new Object();		
+		
+		if(!accessRequired) {
+			reqParameter.client_id = this.options.client_id;
+		}
+		else {
+			if(!this.accessToken) {
+				this.fireEvent('error', 'Please authorize on Instagram');
+				return;
+			}
+			reqParameter.access_token = this.accessToken;
+		}
+		
+		var self = this;
+		
+		var req = new Request.JSONP({
+			url: self.apiEndpoint + endpoint + '?' + Object.toQueryString(reqParameter),
+			onFailure: function(){
+				self.fireEvent('error', 'Connection to Instagram API failed');
+			},
+			onComplete: function(data){
+				if(data.meta.code != 200){
+					self.fireEvent('error', data.meta.error_message);
+					return;
+				}
+				
+				if(typeOf(dataEvents) == 'array') {
+					dataEvents.each(function(item){
+						this.fireEvent(item, data)
+					}, self);
+				}
+				else {
+					self.fireEvent(dataEvents, data);
+				}
+			}
+		});
+		req.send();
 	},
 	
 	getAuthURL: function(){
@@ -21,45 +62,6 @@ var Instagram = new Class({
 	
 	setAccessToken: function(token){
 		this.accessToken = token;	
-	},
-	
-	loadDataByTag: function(tag){
-		var self = this;
-		
-		var req = new Request.JSONP({
-			url: self.apiEndpoint + 'tags/' + tag + '/media/recent/?client_id=' + self.options.client_id,
-			onFailure: function(){
-				self.fireEvent('error', 'Connection to Instagram API failed');
-			},
-			onComplete: function(data){
-				if(data.meta.code != 200){
-					self.fireEvent('error', data.meta.error_message);
-					return;
-				}
-				if(data.data.length <= 0){
-					self.fireEvent('error', 'No images found');
-					return;
-				}
-				
-				self.fireEvent('imageData', data);
-			}
-		});
-		req.send();
-	},
-	
-	loadUser: function(user_id) {
-		var self = this;
-		
-		var req = new Request.JSONP({
-			url: self.apiEndpoint + 'users/' + user_id + '/?access_token=' + self.accessToken,
-			onFailure: function(){
-				self.fireEvent('error', 'Connection to Instagram API failed');
-			},
-			onComplete: function(data){
-				self.fireEvent('userData', data);
-			}
-		});
-		req.send();
 	},
 	
 	loadUserFollows: function(user_id) {
@@ -79,7 +81,6 @@ var Instagram = new Class({
 			},
 			onComplete: function(data){
 				self.fireEvent('userData', data);
-
 			}
 		});
 		req.send();
