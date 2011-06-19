@@ -21,5 +21,19 @@ Instagram.implement({
 		if(max_time) { parameter.max_timestamp = max_time; }
 
 		this.request('users/' + user_id + '/media/recent', 'mediaData', parameter, true);
+	},
+	
+	getLikedMedia: function(count) {
+		var parameter = new Object();
+		if(count) { parameter.count = count; }
+
+		this.request('users/self/media/liked', 'mediaData', parameter, true);
+	},
+	
+	searchUser: function(input) {
+		if(input.length < 3) {
+			return;
+		}
+		this.request('users/search', 'userSearch', {'q': input});
 	}
 });
