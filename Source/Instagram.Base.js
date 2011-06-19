@@ -64,6 +64,20 @@ var Instagram = new Class({
 		this.accessToken = token;	
 	},
 	
+	checkAuthentication: function(){
+		if(this.accessToken) {
+			return;
+		}
+		
+		var hash = window.location.hash.substring(1);
+		var hashArr = hash.split("=");
+		
+		if(hashArr[0] == 'access_token') {
+			this.setAccessToken(hashArr[1]);
+			this.fireEvent('authorization');
+		}
+	},
+	
 	loadUserFollows: function(user_id) {
 		var following = null;
 		var self = this;
