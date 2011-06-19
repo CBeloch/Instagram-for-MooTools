@@ -1,3 +1,21 @@
+/*
+---
+
+script: Instagram.Like.js
+version: 0.6
+description: Retrieve likes for a media
+license: MIT-style
+authors:
+- Christopher Beloch
+
+requires:
+- Instagram.Base
+
+provides: [Instagram.getLikes]
+
+...
+*/
+
 Instagram.implement({
 	/*
 		requires scope 'likes'

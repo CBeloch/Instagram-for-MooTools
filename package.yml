@@ -1,0 +1,21 @@
+name: Instagram for MooTools
+author: C_BHole
+authors:
+  - "[Christopher Beloch](http://blog.cbeloch.de)"
+category: Request
+description: "Access data from Instagram with this MooTools Extension"
+tags: [instagram, media, photo, photos, jsonp, Request]
+demo: http://dev.cbeloch.de/Instagram/Docs/index.html
+current: 0.6
+
+copyright: "&copy; [Christopher Beloch](http://blog.cbeloch.de)"
+
+sources:
+  - "Source/Instagram.Base.js"
+  - "Source/Instagram.Media.js"
+  - "Source/Instagram.Tags.js"
+  - "Source/Instagram.User.js"
+  - "Source/Instagram.Relationship.js"
+  - "Source/Instagram.Comment.js"
+  - "Source/Instagram.Like.js"
+  - "Source/Instagram.Location.js"

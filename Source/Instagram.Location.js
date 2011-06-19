@@ -1,3 +1,24 @@
+/*
+---
+
+script: Instagram.Location.js
+version: 0.6
+description: Retrieve location information, media at a specific location and search for locations
+license: MIT-style
+authors:
+- Christopher Beloch
+
+requires:
+- Instagram.Base
+
+provides:
+- Instagram.getLocation
+- Instagram.getLocationMedia
+- Instagram.searchLocation
+
+...
+*/
+
 Instagram.implement({
 	getLocation: function(location_id) {
 		this.request('locations/' + location_id, 'locationData');

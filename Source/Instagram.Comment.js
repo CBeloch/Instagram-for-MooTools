@@ -1,3 +1,21 @@
+/*
+---
+
+script: Instagram.Comment.js
+version: 0.6
+description: Retrieve comments for a media
+license: MIT-style
+authors:
+- Christopher Beloch
+
+requires:
+- Instagram.Base
+
+provides: [Instagram.getComments]
+
+...
+*/
+
 Instagram.implement({
 	/*
 		requires scope 'comments'

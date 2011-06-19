@@ -1,3 +1,24 @@
+/*
+---
+
+script: Instagram.Media.js
+version: 0.6
+description: Retrieve media information, search for media by latitude and longitude and get the popular media
+license: MIT-style
+authors:
+- Christopher Beloch
+
+requires:
+- Instagram.Base
+
+provides:
+- Instagram.getMedia
+- Instagram.searchMedia
+- Instagram.getPopularMedia
+
+...
+*/
+
 Instagram.implement({
 	getMedia: function(media_id) {
 		this.request('media/' + media_id, 'mediaInformation');

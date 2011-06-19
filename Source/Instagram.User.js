@@ -1,3 +1,26 @@
+/*
+---
+
+script: Instagram.User.js
+version: 0.6
+description: Retrieve user data and get the feed or liked media of the authorized user. Retrieve the recent photos of a user and search for new user.
+license: MIT-style
+authors:
+- Christopher Beloch
+
+requires:
+- Instagram.Base
+
+provides:
+- Instagram.getUser
+- Instagram.getFeed
+- Instagram.getUserMedia
+- Instagram.getLikedMedia
+- Instagram.searchUser
+
+...
+*/
+
 Instagram.implement({
 	getUser: function(user_id) {
 		user_id = user_id || 'self';

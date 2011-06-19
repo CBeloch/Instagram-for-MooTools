@@ -1,3 +1,21 @@
+/*
+---
+
+script: Instagram.Base.js
+version: 0.6
+description: Provides initialization, authentication and the basic request methods
+license: MIT-style
+authors:
+- Christopher Beloch
+
+requires:
+- Core/*
+- More/Request.JSONP
+
+provides: [Instagram]
+
+...
+*/
 
 var Instagram = new Class({
 
@@ -6,7 +24,7 @@ var Instagram = new Class({
 	options: {
 		'client_id': null,
 		'redirect_uri': null,
-		'scope': ['basic', 'relationships']
+		'scope': ['basic']
 	},
 	
 	initialize: function(options){
