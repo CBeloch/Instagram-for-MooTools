@@ -4,13 +4,13 @@ Instagram.implement({
 	},
 	
 	getTagMedia: function(tag){
-		this.request('tags/' + tag + '/media/recent/', 'mediaData');
+		this.request('tags/' + tag + '/media/recent', 'mediaData');
 	},
 	
 	searchTag: function(input){
 		if(input.length < 3) {
 			return;
 		}
-		this.request('tags/search/', 'tagSearch', {'q': input});
+		this.request('tags/search', 'tagSearch', {'q': input});
 	}
 });
