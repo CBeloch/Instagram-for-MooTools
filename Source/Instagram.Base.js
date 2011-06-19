@@ -76,27 +76,5 @@ var Instagram = new Class({
 			this.setAccessToken(hashArr[1]);
 			this.fireEvent('authorization');
 		}
-	},
-	
-	loadUserFollows: function(user_id) {
-		var following = null;
-		var self = this;
-		
-		var userReq = 'self';
-		
-		if(user_id) {
-			userReq = user_id;
-		}
-		
-		var req = new Request.JSONP({
-			url: self.apiEndpoint + 'users/' + userReq + '/follows/?access_token=' + self.accessToken,
-			onFailure: function(){
-				self.fireEvent('error', 'Connection to Instagram API failed');
-			},
-			onComplete: function(data){
-				self.fireEvent('userData', data);
-			}
-		});
-		req.send();
 	}
 });	
