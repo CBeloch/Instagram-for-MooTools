@@ -1,4 +1,8 @@
 Instagram.implement({
+	/*
+		requires scope 'relationships'
+	*/
+	
 	getFollows: function(user_id) {
 		user_id = user_id || 'self';
 		
