@@ -53,7 +53,7 @@ If you just want to use the Media and Tags Endpoints, your code would look like
 > **Arguments:**  
 > 1. media\_id
 
-> **Events**
+> **Events**  
 > mediaInformation
 
 #### searchMedia
@@ -64,13 +64,13 @@ If you just want to use the Media and Tags Endpoints, your code would look like
 	myInstagram.searchMedia(lat, lng, distance, min_time, max_time);
 
 > **Arguments:**
-> 1. lat - Latitude of the center search coordinate. If used, lng is required.
-> 2. lng - Longitude of the center search coordinate. If used, lat is required.
-> 3. distance - Default is 1km (distance=1000), max distance is 5km
-> 4. min\_time - A unix timestamp. All media returned will be taken later than this timestamp.
-> 5. max\_time - A unix timestamp. All media returned will be taken earlier than this timestamp.
+> 1. lat - Latitude of the center search coordinate. If used, lng is required.  
+> 2. lng - Longitude of the center search coordinate. If used, lat is required.  
+> 3. distance - Default is 1km (distance=1000), max distance is 5km  
+> 4. min\_time - A unix timestamp. All media returned will be taken later than this timestamp.  
+> 5. max\_time - A unix timestamp. All media returned will be taken earlier than this timestamp.  
 
-> **Events**
+> **Events**  
 > mediaData
 
 #### getPopularMedia
@@ -80,7 +80,7 @@ If you just want to use the Media and Tags Endpoints, your code would look like
 	#JS
 	myInstagram.getPopularMedia();
 
-> **Events**
+> **Events**  
 > mediaData
 
 ### Tags
@@ -95,10 +95,10 @@ If you just want to use the Media and Tags Endpoints, your code would look like
 	myInstagram.getTagInformation(tag);
 
 > **Arguments:**  
-> 1. tag - (*string*)
+> 1. tag - (*string*)  
 
-> **Events**
-> tagInformation
+> **Events**  
+> tagInformation  
 
 #### getTagMedia
 
@@ -108,9 +108,9 @@ If you just want to use the Media and Tags Endpoints, your code would look like
 	myInstagram.getTagMedia(tag);
 
 > **Arguments:**  
-> 1. tag - (*string*)
+> 1. tag - (*string*)  
 
-> **Events**
+> **Events**  
 > mediaData
 
 #### searchTag
@@ -121,9 +121,9 @@ If you just want to use the Media and Tags Endpoints, your code would look like
 	myInstagram.searchTag(input);
 
 > **Arguments:**  
-> 1. input - (*string*)
+> 1. input - (*string*)  
 
-> **Events**
+> **Events**  
 > tagSearch
 
 ### User
